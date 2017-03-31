@@ -11,6 +11,7 @@ INC_DIR			=	includes
 SRCS			= 	algo/algo.c			\
 					algo/order.c		\
 					ants/ants.c			\
+					ants/exc_paths.c	\
 					draw/draw_lem.c		\
 					draw/draw_tubes.c	\
 					draw/draw_path.c	\
