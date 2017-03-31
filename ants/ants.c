@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ants.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/31 09:05:33 by barnout           #+#    #+#             */
+/*   Updated: 2017/03/31 09:05:37 by barnout          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
 int		sizeof_path(char **path, int size)
@@ -167,67 +179,6 @@ void	move_one_step(char **path, int size)
 		}
 		i--;
 	}
-}
-
-void	ft_putcolor(char c, int color)
-{
-	printf("\e[%d;m%c\e[0;m", color, c);
-}
-
-void	ft_putroom(char **path, int size, int room, int nb, int nb_slt)
-{
-	int		i;
-	int		color;
-	int		toto;
-
-	i = 0;
-	color = 33;
-	toto = 0;
-//	printf("room is %d\n", room);
-	while (i < size)
-		toto += path[i++][room];
-	if (toto != 0)
-	{
-		if (room == 0 || room == size - 1)
-		{
-			if (room == size - 1 && toto == nb + nb_slt)
-				ft_putcolor(toto - nb_slt + '0', 32);
-			else if (room == size - 1 && toto > nb_slt)
-				ft_putcolor(toto - nb_slt + '0', 31);
-			else if (room == size - 1)
-				ft_putcolor(toto - nb_slt + '0', 35);
-			else
-				ft_putcolor(toto + '0', 33);
-		}
-		else if (toto > 1)
-		{
-		//	printf("char to print in color is %c\n", room + '0');
-			ft_putcolor(toto - 1 + '0', 31);
-		}
-		else
-			printf("0");
-	}
-	else
-		printf("0");
-}
-
-void	draw_from_path(char **path, int size, char *draw, int nb, int nb_slt)
-{
-	int		i;
-	int		len;
-
-	len = ft_strlen(draw);
-	i = 0;
-//	print_lem(path, size);
-	while (i < len)
-	{
-		if (draw[i] >= '0' && draw[i] <= '9')
-			ft_putroom(path, size, draw[i] - '0', nb, nb_slt);
-		else
-			printf("%c",draw[i]);
-		i++;
-	}
-	printf("\n\n");
 }
 
 int		add_paths_in(t_path slt, int i, int j)

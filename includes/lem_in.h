@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/03/30 18:29:55 by barnout          ###   ########.fr       */
+/*   Updated: 2017/03/31 09:07:56 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	print_tab(int *tab, int size);
 void	put_in_order(t_lem *lem);
 void	put_tubes(t_lem *lem, char *str, char **path, int width, int size);
 void	print_rooms_order(t_lem lem);
+void	draw_from_path(char **path, int size, char *draw, int nb, int nb_slt);
 
 # define ROOM (lem->room)
 # define SIZE (lem->size)

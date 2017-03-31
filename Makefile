@@ -13,6 +13,7 @@ SRCS			= 	algo/algo.c			\
 					ants/ants.c			\
 					draw/draw_lem.c		\
 					draw/draw_tubes.c	\
+					draw/draw_path.c	\
 					parser/parse_nb.c	\
 					parser/parse_room.c	\
 					parser/parse_tube.c	\
