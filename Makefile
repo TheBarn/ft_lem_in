@@ -1,5 +1,5 @@
 CC				=	gcc
-NAME			=	lem_in
+NAME			=	lem-in
 CFLAGS			+=	-Wall -Wextra -Werror
 
 LIB_PATH		=	libft
