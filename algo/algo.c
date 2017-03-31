@@ -106,7 +106,6 @@ int			fill_path(char **lem, int *room, char **path, int	i, int j, int k)
 	lem[k][k] = 1;
 	room[k] = i + 1;
 	path[j][k] = 1;
-//	print_lem(path, 8); //
 	return (1);
 }
 
@@ -122,7 +121,7 @@ int			add_next_branches(char **lem, int size, char **path, int i, int *room)
 	{
 		if (room[j] == i)
 		{
-			k = j + 1;
+			k = 0;
 			while (k < size)
 			{
 				while (lem[j][k] == 0)
@@ -209,11 +208,13 @@ char		**find_shortest_path(char **lem, int size)
 	room = ini_room(size);
 	i = 0;
 	toto = 1;
+//	print_lem(path, size);    //
 	while (toto)
 	{
 		toto = 0;
 		toto += add_next_branches(lem, size, path, i, room);
 		i++;
+//		print_lem(path, size);    //
 	}
 	if (room[size - 1] == -1)
 		return (NULL);
@@ -280,12 +281,14 @@ t_path		algo(char **lem, int size)
 	while (size > 0)
 	{
 		new_path = find_shortest_path(ft_lemcpy(lem, size), size);
-	//	print_lem(new_path, size);
+//		print_lem(new_path, size);
 		if (new_path != NULL)
 		{
 //			print_lem(new_path, size);
 			add_new_path(&slt, new_path, size);
 			prune_lem(lem, new_path, size);
+//			printf("\nlem after pruning is :\n\n");  //
+//			print_lem(lem, size);     //
 		}
 		else
 			size = 0;

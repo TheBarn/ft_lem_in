@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:29:39 by barnout           #+#    #+#             */
-/*   Updated: 2017/03/31 10:09:08 by barnout          ###   ########.fr       */
+/*   Updated: 2017/03/31 10:57:28 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		main(int ac, char **av)
 	}
 	lem = parser(fd);
 	printf("\n\e[33;mThe anthill can be representated this way :\e[0;m\n\n%s\n\n", draw_lem(&lem, lem.map));
-//	put_in_order(&lem);
+	print_rooms_order(lem);
 	slt = algo(lem.map, lem.size);
 	str = draw_paths_only(&lem, slt);
 	printf("\e[33;mWe will only use %d path(s) in the anthill :\e[0;m\n\n%s\n\n", slt.size, str);
