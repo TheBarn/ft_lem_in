@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:05:33 by barnout           #+#    #+#             */
-/*   Updated: 2017/03/31 09:05:37 by barnout          ###   ########.fr       */
+/*   Updated: 2017/03/31 10:10:31 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,7 @@ void	add_paths(t_path slt, int size, char **com)
 	}
 }
 
-void	move_ants(t_path slt, int nb, int size, char *draw)
+void	move_ants(t_lem lem, t_path slt, int nb, int size, char *draw)
 {
 	int		i;
 	char	**com;
@@ -223,7 +223,7 @@ void	move_ants(t_path slt, int nb, int size, char *draw)
 	ini_moves(slt, size, nb);
 	com = ini_path(size);
 	add_paths(slt, size, com);
-	draw_from_path(com, size, draw, nb, slt.size);
+	draw_from_path(lem, com, size, draw, nb, slt.size);
 	toto = 0;
 	while (still_ants(com, size, nb, slt.size))
 	{
@@ -231,7 +231,7 @@ void	move_ants(t_path slt, int nb, int size, char *draw)
 		while (i < slt.size)
 			move_one_step(slt.path[i++], size);
 		add_paths(slt, size, com);
-		draw_from_path(com, size, draw, nb, slt.size);
+		draw_from_path(lem, com, size, draw, nb, slt.size);
 		toto++;
 	}
 	printf("The ants moved from \e[33;mSTART\e[0;m to \e[35;mEND\e[0;m in %d moves.\n\n", toto);

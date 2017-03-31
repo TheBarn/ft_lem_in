@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:29:39 by barnout           #+#    #+#             */
-/*   Updated: 2017/03/30 18:29:22 by barnout          ###   ########.fr       */
+/*   Updated: 2017/03/31 10:09:08 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		main(int ac, char **av)
 	str = draw_paths_only(&lem, slt);
 	printf("\e[33;mWe will only use %d path(s) in the anthill :\e[0;m\n\n%s\n\n", slt.size, str);
 	printf("%d ant(s) will travel in the anthill from \e[33;mSTART\e[0;m to \e[35;mEND\e[0;m.\nThere can be no more than one ant in every room, except for \e[33;mSTART\e[0;m and \e[35;mEND\e[0;m which do not have a maximum number of ants.\nEach room are representated by numbers, according to the number of ants they contain.\n\n", lem.nb);
-	move_ants(slt, lem.nb, lem.size, str);
+	move_ants(lem, slt, lem.nb, lem.size, str);
 	i = 0;
 	while (i < slt.size)
 		free_path((slt.path)[i++], lem.size);

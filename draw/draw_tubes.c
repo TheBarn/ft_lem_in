@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:45:08 by barnout           #+#    #+#             */
-/*   Updated: 2017/03/30 17:56:50 by barnout          ###   ########.fr       */
+/*   Updated: 2017/03/31 09:46:16 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ void	put_tube(t_lem *lem, char *str, int width, int i, int j)
 
 	a = 0;
 //	printf("tube %s-%s\n", ROOM[i].name, ROOM[j].name);
-	while ((size_t) a < ft_strlen(str) && (str[a] != (ROOM[i].name)[0] || str[a + 1] != (ROOM[i].name)[1]))
+	while ((size_t) a < ft_strlen(str) && ft_strncmp(&str[a], ROOM[i].name, 2))
 		a++;
 	x1 = a % width;
 	y1 = a / width;
 	a = 0;
-	while ((size_t) a < ft_strlen(str) && str[a] != j + (ROOM[j].name)[0] && str[a + 1] != (ROOM[j].name)[1])
+	while ((size_t) a < ft_strlen(str) && ft_strncmp(&str[a], ROOM[j].name, 2))
 		a++;
 	x2 = a % width;
 	y2 = a / width;

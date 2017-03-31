@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/03/31 09:07:56 by barnout          ###   ########.fr       */
+/*   Updated: 2017/03/31 10:09:46 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*draw_lem(t_lem *lem, char **tube);
 t_path	algo(char **lem, int size);
 void	print_lem(char **lem, int size); //
 char	**ft_lemcpy(char **lem, int size);
-void	move_ants(t_path slt, int nb, int size, char *draw);
+void	move_ants(t_lem lem, t_path slt, int nb, int size, char *draw);
 char	**ini_path(int size);
 void	free_path(char **path, int size);
 void	add_paths(t_path slt, int size, char **com);
@@ -73,7 +73,7 @@ void	print_tab(int *tab, int size);
 void	put_in_order(t_lem *lem);
 void	put_tubes(t_lem *lem, char *str, char **path, int width, int size);
 void	print_rooms_order(t_lem lem);
-void	draw_from_path(char **path, int size, char *draw, int nb, int nb_slt);
+void	draw_from_path(t_lem lem, char **path, int size, char *draw, int nb, int nb_slt);
 
 # define ROOM (lem->room)
 # define SIZE (lem->size)
