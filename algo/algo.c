@@ -277,7 +277,7 @@ t_path		algo(char **lem, int size)
 	
 	slt.path = NULL;
 	slt.size = 0;
-	print_lem(lem, size);
+//	print_lem(lem, size);
 	while (size > 0)
 	{
 		new_path = find_shortest_path(ft_lemcpy(lem, size), size);

@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:05:33 by barnout           #+#    #+#             */
-/*   Updated: 2017/03/31 14:54:03 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/03 14:53:48 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,11 +257,17 @@ int		first_in(int *start, int nb)
 	return (0);
 }	
 
-void	print_moves(t_lem lem, char **com, int size, int *room, int j, int *start)
+int		print_moves(t_lem lem, char **com, int size, int *room, int j, int *start)
 {
 	int		i;
 	int		first;
+	int		toto;
 
+//	print_lem(com, size);    //
+//	printf("j is %d\n", j);
+//	print_tab(room, size);
+	toto = 0;
+//	print_tab(start, lem.nb);
 	if (j != 0)
 	{
 	i = 0;
@@ -269,18 +275,32 @@ void	print_moves(t_lem lem, char **com, int size, int *room, int j, int *start)
 	{
 		if (com[i][j] > 1 && i != 0)
 		{
-			print_mv(room[i], (lem.room)[j].name);
+			if (print_moves(lem, com, size, room, i, start))
+				print_mv(room[i], (lem.room)[j].name);
+			else
+				print_mv_l(room[i], (lem.room)[j].name);
 			room[j] = room[i];
-			print_moves(lem, com, size, room, j, start);
+			room[i] = 0;
+			toto++;
 		}
-		else if (com[i][j] > 1)
+		else if (com[i][j] > 1 && i == 0)
 		{
 			first = first_in(start, lem.nb);
-			print_mv(first, (lem.room)[j].name);
+			print_mv_l(first, (lem.room)[j].name);
 			room[j] = first;
+			toto++;
 		}
+		i++;
 	}
+	if (toto == 0)
+	{
+		print_moves(lem, com, size, room, j - 1, start);
+		return (toto);
 	}
+	else
+		return (1);
+	}
+	return (0);
 }
 
 void	ini_start(int *start, int nb)
@@ -289,7 +309,10 @@ void	ini_start(int *start, int nb)
 
 	i = 1;
 	while (i <= nb)
+	{
 		start[i - 1] = i;
+		i++;
+	}
 }
 
 void	move_ants_no_show(t_lem lem, t_path slt, int nb, int size)
@@ -299,19 +322,11 @@ void	move_ants_no_show(t_lem lem, t_path slt, int nb, int size)
 	int		*room;
 	int		start[lem.nb];
 
-	printf("yo1"); //
 	ini_moves(slt, size, nb);
-	printf("yo2"); //
 	ini_start(start, lem.nb);
-	printf("yo3"); //
 	room = ini_room_mv(size);
-	printf("yo4"); //
 	com = ini_path(size);
-	printf("yo5"); //
 	add_paths(slt, size, com);
-	printf("yo6"); //
-	print_moves(lem, com, size, room, size - 1, start);
-	printf("yo7"); //
 	while (still_ants(com, size, nb, slt.size))
 	{
 		i = 0;

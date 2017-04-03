@@ -146,8 +146,9 @@ t_room	*parse_room(int fd, t_lem *lem, char **line)
 
 	room = NULL;
 	tmp = 0;
-	while (get_next_line(fd, line) > 0 && (is_room(*line) || (*line)[0] == '#'))
+	while (get_next_line(fd, line) == 1 && (is_room(*line) || (*line)[0] == '#'))
 	{
+		printf("%s\n", *line);
 		if ((*line)[0] != '#')
 		{
 		split = ft_strsplit(*line, ' ');

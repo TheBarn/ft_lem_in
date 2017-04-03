@@ -18,9 +18,6 @@ int		read_command(char *line)
 		return (0);
 }
 
-
-
-
 t_lem	parser(int fd)
 {
 	char	*line;
@@ -32,6 +29,7 @@ t_lem	parser(int fd)
 	lem.room = parse_room(fd, &lem, &line);
 //	print_rooms_order(lem);
 	lem.map = parse_tubes(fd, &lem, &line);
+	printf("\n");
 //	print_lem(lem.map, lem.size);
 //	print_rooms_order(lem);
 //	print_lem(lem.map, lem.size);

@@ -88,8 +88,10 @@ char	**parse_tubes(int fd, t_lem *lem, char **line)
 		tube = read_tube(lem, *line);
 		map[ft_min(tube.start, tube.end)][ft_max(tube.start, tube.end)] += 1;
 	}
-	while (get_next_line(fd, line) > 0)
+	printf("%s\n", *line);
+	while (get_next_line(fd, line) == 1)
 	{
+		printf("%s\n", *line);
 		if ((*line)[0] != '#')
 		{
 			tube = read_tube(lem, *line);

@@ -35,8 +35,9 @@ int		parse_nb(int fd, char **line)
 	int		nb;
 
 	nb = -1;
-	while (nb == -1 && get_next_line(fd, line) > 0)
+	while (nb == -1 && get_next_line(fd, line) == 1)
 	{
+		printf("%s\n", *line);
 		if ((*line)[0] == '#' && read_command(*line) != 0)
 			exit_lem_in("the number of ants is not at the beggining of the file");
 		else

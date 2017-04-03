@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/03/31 11:57:44 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/03 14:33:21 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ void	exc_paths(t_lem lem, char *draw);
 void	check_path(int size);
 int		find_room_id(t_lem lem, char *str);
 void	ft_putroom_in_color(int room, int color);
+void	move_ants_no_show(t_lem lem, t_path slt, int nb, int size);
+void	print_mv(int ant, char *room);
+void	print_mv_l(int ant, char *room);
 
 # define ROOM (lem->room)
 # define SIZE (lem->size)
