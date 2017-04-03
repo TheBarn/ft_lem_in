@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/03 16:52:30 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/03 20:21:51 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*draw_lem(t_lem *lem, char **tube);
 t_path	algo(char **lem, int size);
 void	print_lem(char **lem, int size); //
 char	**ft_lemcpy(char **lem, int size);
-void	move_ants(t_lem lem, t_path slt, int nb, int size, char *draw);
+void	move_ants(t_lem lem, char *draw);
 char	**ini_path(int size);
 void	free_path(char **path, int size);
 void	add_paths(t_path slt, int size, char **com);

@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:42:26 by barnout           #+#    #+#             */
-/*   Updated: 2017/03/31 09:39:59 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/03 18:14:28 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*draw_lem(t_lem *lem, char **tubes)
 	int		length;
 	char	*str;
 
-	print_lem(tubes, lem->size);
+//	print_lem(tubes, lem->size);
 	width = max_x(lem);
 	length = max_y(lem);
 	str = ini_str(width, length);
