@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:05:33 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/03 16:35:01 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/03 16:47:09 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,7 +270,7 @@ void		print_moves(t_lem lem, char **com, int size, int *room, int j, int *start,
 	i = 0;
 	while (i < size)
 	{
-		if (com[i][j] > 1 && i != 0)
+		if (com[i][j] > 1 && i != 0 && room[i] != 0)
 		{
 			if (opt++ > 0)
 				printf(" ");
