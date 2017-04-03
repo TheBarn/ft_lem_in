@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:05:33 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/03 14:53:48 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/03 16:35:01 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,17 +257,14 @@ int		first_in(int *start, int nb)
 	return (0);
 }	
 
-int		print_moves(t_lem lem, char **com, int size, int *room, int j, int *start)
+void		print_moves(t_lem lem, char **com, int size, int *room, int j, int *start, int opt)
 {
 	int		i;
 	int		first;
 	int		toto;
 
-//	print_lem(com, size);    //
-//	printf("j is %d\n", j);
-//	print_tab(room, size);
 	toto = 0;
-//	print_tab(start, lem.nb);
+//	ft_putnbr(j); //
 	if (j != 0)
 	{
 	i = 0;
@@ -275,32 +272,27 @@ int		print_moves(t_lem lem, char **com, int size, int *room, int j, int *start)
 	{
 		if (com[i][j] > 1 && i != 0)
 		{
-			if (print_moves(lem, com, size, room, i, start))
-				print_mv(room[i], (lem.room)[j].name);
-			else
-				print_mv_l(room[i], (lem.room)[j].name);
+			if (opt++ > 0)
+				printf(" ");
+			printf("L%d-%s", room[i], (lem.room)[j].name);
 			room[j] = room[i];
 			room[i] = 0;
+			print_moves(lem, com, size, room, i, start, 1);
 			toto++;
 		}
 		else if (com[i][j] > 1 && i == 0)
 		{
+			if (opt++ > 0)
+				printf(" ");
 			first = first_in(start, lem.nb);
-			print_mv_l(first, (lem.room)[j].name);
+//			printf("first is %d\n", first);
+			printf("L%d-%s", first, (lem.room)[j].name);
 			room[j] = first;
 			toto++;
 		}
 		i++;
 	}
-	if (toto == 0)
-	{
-		print_moves(lem, com, size, room, j - 1, start);
-		return (toto);
 	}
-	else
-		return (1);
-	}
-	return (0);
 }
 
 void	ini_start(int *start, int nb)
@@ -314,26 +306,110 @@ void	ini_start(int *start, int nb)
 		i++;
 	}
 }
+/*
+void	print_moves(char **diff, int size, int *room)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	increment_room(room, size);
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if (diff[i][j] > 0 && i != 0)
+				increment_room_path(room, size, j, lem);
+		}
+	}
+}*/
+
+char	**ini_diff(int size, char **new, char **old)
+{
+	char	**diff;
+	int		i;
+	int		j;
+
+	i = 0;
+	diff = ini_path(size);
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			diff[i][j] = ft_max(new[i][j] - old[i][j], 0);
+			j++;
+		}
+		i++;
+	}
+	return (diff);
+}
+
+void	print_from_diff(t_lem lem, char **com, char **tmp, int size, int *room, int *start)
+{
+	char	**diff;
+	int		j;
+	int		i;
+	int		toto;
+
+	diff = ini_diff(size, com, tmp);
+//	print_lem(diff, size);
+	j = 0;
+	toto = 0;
+	while (j < size - 1)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (diff[i][j] > 0)
+			{
+				if (toto == 0)
+					print_moves(lem, com, size, room, j, start, toto++);
+				else
+					print_moves(lem, com, size, room, j, start, toto);
+			}
+			i++;
+		}
+		j++;
+	}
+	i = 0;
+	while (i < size && diff[i][j] == 0)
+		i++;
+	if (i < size)
+		print_moves(lem, com, size, room, j, start, toto);
+}
 
 void	move_ants_no_show(t_lem lem, t_path slt, int nb, int size)
 {
 	int		i;
 	char	**com;
+	char	**tmp;
 	int		*room;
 	int		start[lem.nb];
+	int		j; //
 
 	ini_moves(slt, size, nb);
 	ini_start(start, lem.nb);
 	room = ini_room_mv(size);
 	com = ini_path(size);
 	add_paths(slt, size, com);
-	while (still_ants(com, size, nb, slt.size))
+	j = 0;
+	while (still_ants(com, size, lem.nb, slt.size))   //What if the last id ant is not the real last one
 	{
+		tmp = ft_lemcpy(com, size);
 		i = 0;
 		while (i < slt.size)
 			move_one_step(slt.path[i++], size);
 		add_paths(slt, size, com);
-		print_moves(lem, com, size, room, size - 1, start);
+//		print_tab(room, size);
+//		print_tab(start, lem.nb);
+//		print_lem(tmp, size);
+//		print_lem(com, size);
+		print_from_diff(lem, com, tmp, size, room, start);
+		free_path(tmp, size);
+		j++;
+		printf("\n");
 	}
 	free_path(com, size);
 	free(room);
