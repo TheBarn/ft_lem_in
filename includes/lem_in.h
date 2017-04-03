@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/03 20:21:51 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/03 21:11:13 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <sys/types.h>
-
 
 typedef struct 	s_room
 {
@@ -76,6 +75,7 @@ void	print_rooms_order(t_lem lem);
 void	draw_from_path(t_lem lem, char **path, int size, char *draw, int nb, int nb_slt);
 void	exc_paths(t_lem lem, char *draw);
 void	check_path(int size);
+int		max_y(t_lem *lem);
 int		find_room_id(t_lem lem, char *str);
 void	ft_putroom_in_color(int room, int color);
 void	move_ants_no_show(t_lem lem, t_path slt, int nb, int size);

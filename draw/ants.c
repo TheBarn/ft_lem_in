@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:05:33 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/03 20:21:38 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/03 21:07:43 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -495,18 +495,27 @@ void	move_ants(t_lem lem, char *str)
 	char	*line;
 	int		ants[lem.size];
 	int		toto;
+	int		len;
 
 	line = NULL;
+	len = max_y(&lem);
 	ini_ants(lem, ants);
 	print_path_color(lem, str, ants);
 	toto = 0;
 	while (get_next_line(0, &line) == 1 && line[0] != '\0')
 	{
+		sleep(1);
 		if (toto == 0)
+		{
+			sleep(1);
 			toto = ft_strcount(line, ' ') + 1;
+		}
 		ants[0] = ft_max(ants[0] - toto, 0);
 		add_middle_ants(lem, ants, line);
 		ants[lem.size - 1] += count_last_room(lem, line);
+		ft_putstr("\e[");
+		ft_putnbr(len);
+		ft_putstr("A");
 		print_path_color(lem, str, ants);
 		clear_middle(lem.size, ants);
 	}

@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:29:39 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/03 18:36:42 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/03 21:11:15 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	print_lem_color(t_lem lem, char *draw)
 			printf("%c",draw[i]);
 		i++;
 	}
+	printf("\n");
 }
 /*
 int		main(void)
@@ -81,7 +82,7 @@ int		main(void)
 	char	*draw;
 
 	lem = parser(0);
-	print_lem(lem.map, lem.size);
+//	print_lem(lem.map, lem.size);
 	draw = draw_lem(&lem, lem.map);
 	printf("\nThe anthill can be representated this way, with \e[33;mSTART\e[0;m and \e[35;mEND\e[0;m :\n\n");
 	print_lem_color(lem, draw);
@@ -91,7 +92,7 @@ int		main(void)
 	check_path(slt.size);
 	str = draw_paths_only(&lem, slt);
 	printf("We will only use %d path(s) in the anthill, from \e[33;mSTART\e[0;m to \e[35;mEND\e[0;m :\n\n", slt.size);
-	print_lem_color(lem, str);
+//	print_lem_color(lem, str);
 //	printf("\n%d ant(s) will travel in the anthill from \e[33;mSTART\e[0;m to \e[35;mEND\e[0;m.\nThere can be no more than one ant in every room, except for \e[33;mSTART\e[0;m and \e[35;mEND\e[0;m which do not have a maximum number of ants.\nEach room are representated by numbers, according to the number of ants they contain.\n\n", lem.nb);
 	move_ants(lem, str);
 	i = 0;
