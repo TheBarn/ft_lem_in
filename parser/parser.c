@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:36 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 12:23:40 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 15:41:28 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ int		read_command(char *line)
 		return (0);
 }
 
-t_lem	parser(int fd)
+t_lem	parser(int opt)
 {
 	char	*line;
 	t_lem	lem;
 
 	line = NULL;
-	lem.nb = parse_nb(fd, &line);
+	lem.nb = parse_nb(0, &line);
 	lem.size = 0;
-	lem.room = parse_room(fd, &lem, &line);
-	lem.map = parse_tubes(fd, &lem, &line);
+	lem.room = parse_room(0, &lem, &line);
+	lem.map = parse_tubes(0, &lem, &line, opt);
 	printf("\n");
 	return (lem);
 }

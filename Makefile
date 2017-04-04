@@ -2,7 +2,6 @@ CC				=	gcc
 NAME			=	lem-in
 NAME_V			=	visu
 FLAGS			=	-Wall -Wextra -Werror
-FLAGS_V			=	-Wall -Wextra -Werror
 
 LIB_PATH		=	libft
 LIB				=	$(LIB_PATH)/libft.a
@@ -19,26 +18,33 @@ SRCS			= 	algo/algo.c			\
 					ants/step.c			\
 					parser/parse_nb.c	\
 					parser/parse_room.c	\
-					parser/parse_tube.c	\
+					parser/parse_pipe.c	\
 					parser/parser.c		\
 					parser/parser_utils.c		\
 					utils/utils.c		\
 					utils/lem_utils.c	\
 					main.c
 
-SRCS_V			=	draw/main-visu.c	\
-					draw/parser.c	\
-					draw/parse_nb.c	\
-					draw/parse_room.c	\
-					draw/parse_tube.c	\
+SRCS_V			=	algo/algo.c			\
+					algo/prune.c		\
+					algo/shortest_path.c		\
+					ants/step.c			\
+					draw/main_visu.c	\
 					draw/draw_lem.c	\
+					parser/parse_nb.c	\
+					parser/parse_room.c	\
+					parser/parse_pipe.c	\
+					parser/parser.c		\
+					parser/parser_utils.c		\
+					utils/utils.c		\
+					utils/lem_utils.c	\
 					draw/draw_path.c	\
-					draw/draw_tubes.c	\
-					draw/lem_utils.c	\
+					draw/draw_pipes.c	\
 					draw/exc_paths.c	\
-					draw/ants.c	\
-					draw/algo.c	\
-					draw/utils.c
+					draw/anim.c	\
+					draw/color.c	\
+					draw/draw_utils.c	\
+					draw/put_pipes.c	\
 
 OBJS			=	$(SRCS:.c=.o)
 OBJS_V			=	$(SRCS_V:.c=.o)
@@ -64,7 +70,7 @@ $(LIB):
 	@make -C $(LIB_PATH)
 
 $(NAME_V):	$(LIB) $(OBJS_V)
-	@$(CC) $(FLAGS_V) -o $(NAME_V) $^ $(LIB_LINK)
+	@$(CC) $(FLAGS) -o $(NAME_V) $^ $(LIB_LINK)
 	@echo "Compiling" [ $(NAME_V) ] $(SUCCESS)
 
 clean:

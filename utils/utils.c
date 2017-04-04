@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:38:39 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 12:38:45 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 17:05:58 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,21 @@ int		ft_min(int a, int b)
 	if (a < b)
 		return (a);
 	return (b);
+}
+
+int		ft_strcount(char *str, char c)
+{
+	int		i;
+	int		len;
+	int		toto;
+
+	i = 0;
+	toto = 0;
+	len = ft_strlen(str);
+	while (i < len)
+		if (str[i++] == c)
+			toto++;
+	return (toto);
 }
 
 void	print_tab(int *tab, int size)

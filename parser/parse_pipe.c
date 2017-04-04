@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:32 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 12:34:36 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:35:41 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int		room_rank(t_lem *lem, char *str)
 	return (i);
 }
 
-t_tube	read_tube(t_lem *lem, char *str)
+t_coord	read_tube(t_lem *lem, char *str)
 {
-	t_tube	tube;
+	t_coord	tube;
 	char	**split;
 
 	if (count_words(str, ' ') != 1)
@@ -61,10 +61,10 @@ t_tube	read_tube(t_lem *lem, char *str)
 	if (count_words(str, '-') != 2)
 		exit_lem_in("ERROR");
 	split = ft_strsplit(str, '-');
-	tube.start = room_rank(lem, split[0]);
-	tube.end = room_rank(lem, split[1]);
+	tube.x = room_rank(lem, split[0]);
+	tube.y = room_rank(lem, split[1]);
 	free_split(split, 2);
-	if (tube.start == tube.end)
+	if (tube.x == tube.y)
 		exit_lem_in("ERROR");
 	return (tube);
 }
@@ -88,26 +88,28 @@ void	check_map(t_lem *lem, char **map)
 	}
 }
 
-char	**parse_tubes(int fd, t_lem *lem, char **line)
+char	**parse_tubes(int fd, t_lem *lem, char **line, int opt)
 {
-	t_tube	tube;
+	t_coord	tube;
 	char	**map;
+	int		tmp;
 
 	map = ini_map(lem);
 	if ((*line)[0] != '#')
 	{
 		tube = read_tube(lem, *line);
-		map[ft_min(tube.start, tube.end)][ft_max(tube.start, tube.end)] += 1;
+		map[ft_min(tube.x, tube.y)][ft_max(tube.x, tube.y)] += 1;
 	}
 	printf("%s\n", *line);
-	while (get_next_line(fd, line) == 1)
+	while ((tmp = get_next_line(fd, line)) == 1 || \
+			(tmp = 1 && opt == 1 && (*line)[0] != '\0'))
 	{
 		printf("%s\n", *line);
 		if ((*line)[0] != '#')
 		{
 			tube = read_tube(lem, *line);
-			map[tube.start][tube.end] += 1;
-			map[tube.end][tube.start] += 1;
+			map[tube.x][tube.y] += 1;
+			map[tube.y][tube.x] += 1;
 		}
 	}
 	check_map(lem, map);

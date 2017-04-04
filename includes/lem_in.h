@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 14:59:55 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:38:37 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ typedef struct 	s_room
 	int		sp;
 }				t_room;
 
-typedef struct	s_tube
+typedef struct	s_coord
 {
-	int		start;
-	int		end;
-}				t_tube;
+	int		x;
+	int		y;
+}				t_coord;
 
 typedef struct	s_lem
 {
@@ -53,14 +53,14 @@ int		parse_nb(int fd, char **line);
 int		test_intmax(char *str);
 t_room	*parse_room(int fd, t_lem *lem, char **line);
 int		count_words(char *s, char c);
-char	**parse_tubes(int fd, t_lem *lem, char **line);
-t_lem	parser(int fd);
+char	**parse_tubes(int fd, t_lem *lem, char **line, int opt);
+t_lem	parser(int opt);
 void	exit_lem_in(char *str);
 int		read_command(char *line);
 void	free_split(char **tab, int size);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
-char	*draw_lem(t_lem *lem, char **tube);
+char	*draw_lem(t_lem lem, char **tube);
 t_path	algo(char **lem, int size);
 void	print_lem(char **lem, int size); //
 char	**ft_lemcpy(char **lem, int size);
@@ -69,13 +69,14 @@ char	**ini_path(int size);
 void	free_path(char **path, int size);
 void	add_paths(t_path slt, int size, char **com);
 void	print_tab(int *tab, int size);
-void	put_tubes(t_lem *lem, char *str, char **path, int width, int size);
+void	put_tubes(t_lem lem, char *str, char **path, int width);
 void	print_rooms_order(t_lem lem);
-void	draw_from_path(t_lem lem, char **path, int size, char *draw, int nb, int nb_slt);
+void	draw_from_path(t_lem lem, char **path, char *draw, int nb_slt);
 void	exc_paths(t_lem lem, char *draw);
 void	check_path(int size);
-int		max_y(t_lem *lem);
+int		max_y(t_lem lem);
 int		find_room_id(t_lem lem, char *str);
+void	print_path_color(t_lem lem, char *draw, int *ants);
 void	ft_putroom_in_color(int room, int color);
 void	move_ants_no_show(t_lem lem, t_path slt);
 void	print_mv(int ant, char *room);
@@ -95,11 +96,11 @@ void	add_paths(t_path slt, int size, char **com);
 void	move_one_step(char **path, int size);
 char	**ini_diff(int size, char **new, char **old);
 void	print_moves(t_lem lem, int j, int *start, int opt);
-
-# define ROOM (lem->room)
-# define SIZE (lem->size)
-# define NB (lem->nb)
-# define MAP (lem->map)
-# define BUFF_SIZE 8
+int		ft_strcount(char *str, char c);
+void	ini_ants(t_lem lem, int *ants);
+void	put_horizontal(char *str, int width, int x1, int y1);
+void	put_vertical(char *str, int width, int x1, int y1);
+void	put_up(char *str, int width, int x1, int y1);
+void	put_down(char *str, int width, int x1, int y1);
 
 #endif
