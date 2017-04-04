@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:32 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:35:41 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 19:21:16 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ char	**ini_map(t_lem *lem)
 	int		i;
 	int		j;
 
-	map = (char **)malloc(sizeof(char *) * lem->size);
+	map = (char **)my_malloc(sizeof(char *) * lem->size);
 	i = 0;
 	while (i < lem->size)
-		map[i++] = (char *)malloc(sizeof(char) * lem->size);
+		map[i++] = (char *)my_malloc(sizeof(char) * lem->size);
 	i = 0;
 	while (i < lem->size)
 	{
@@ -100,11 +100,11 @@ char	**parse_tubes(int fd, t_lem *lem, char **line, int opt)
 		tube = read_tube(lem, *line);
 		map[ft_min(tube.x, tube.y)][ft_max(tube.x, tube.y)] += 1;
 	}
-	printf("%s\n", *line);
+	ft_printf("%s\n", *line);
 	while ((tmp = get_next_line(fd, line)) == 1 || \
 			(tmp = 1 && opt == 1 && (*line)[0] != '\0'))
 	{
-		printf("%s\n", *line);
+		ft_printf("%s\n", *line);
 		if ((*line)[0] != '#')
 		{
 			tube = read_tube(lem, *line);

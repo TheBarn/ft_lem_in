@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:21 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 12:24:02 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:51:22 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		parse_nb(int fd, char **line)
 	nb = -1;
 	while (nb == -1 && get_next_line(fd, line) == 1)
 	{
-		printf("%s\n", *line);
+		ft_printf("%s\n", *line);
 		if ((*line)[0] == '#' && read_command(*line) != 0)
 			exit_lem_in("ERROR");
 		else

@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:05:33 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 14:41:02 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:48:10 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	move_ants_no_show(t_lem lem, t_path slt)
 		print_from_diff(lem, diff, start);
 		free(diff);
 		free_path(tmp, lem.size);
-		printf("\n");
+		ft_printf("\n");
 	}
 	free_path(lem.map, lem.size);
 	free(lem.room);

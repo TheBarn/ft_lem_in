@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:58:39 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 14:59:54 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:48:02 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_ant_move(t_lem lem, int *start, int i, int j)
 
 	if (lem.map[i][j] > 1 && i != 0 && lem.room[i].sp != 0)
 	{
-		printf("L%d-%s", lem.room[i].sp, (lem.room)[j].name);
+		ft_printf("L%d-%s", lem.room[i].sp, (lem.room)[j].name);
 		lem.room[j].sp = lem.room[i].sp;
 		lem.room[i].sp = 0;
 		print_moves(lem, i, start, 1);
@@ -45,7 +45,7 @@ void	print_ant_move(t_lem lem, int *start, int i, int j)
 	else if (lem.map[i][j] > 1 && i == 0)
 	{
 		first = first_in(start, lem.nb);
-		printf("L%d-%s", first, (lem.room)[j].name);
+		ft_printf("L%d-%s", first, (lem.room)[j].name);
 		lem.room[j].sp = first;
 	}
 }
@@ -63,7 +63,7 @@ void	print_moves(t_lem lem, int j, int *start, int opt)
 						(i != 0 && lem.room[i].sp != 0)))
 			{
 				if (opt++ > 0)
-					printf(" ");
+					ft_printf(" ");
 				print_ant_move(lem, start, i, j);
 			}
 			i++;

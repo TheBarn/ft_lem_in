@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:29:39 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:33:51 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:49:03 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	print_lem_color(t_lem lem, char *draw)
 				&& draw[i + 1] <= '9')
 			ft_put_sp_color(lem, find_room_id(lem, &draw[i]));
 		else if (!(draw[i] >= '0' && draw[i] <= '9'))
-			printf("%c", draw[i]);
+			ft_printf("%c", draw[i]);
 		i++;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 int		main(void)
@@ -61,14 +61,14 @@ int		main(void)
 
 	lem = parser(1);
 	draw = draw_lem(lem, lem.map);
-	printf("\nThe anthill can be representated this way, with \e[33;mSTART\e\
+	ft_printf("\nThe anthill can be representated this way, with \e[33;mSTART\e\
 			[0;m and \e[35;mEND\e[0;m :\n\n");
 	print_lem_color(lem, draw);
 	exc_paths(lem, draw);
 	slt = algo(lem.map, lem.size);
 	check_path(slt.size);
 	str = draw_paths_only(lem, slt);
-	printf("We will only use %d path(s) in the anthill, from \e[33;mSTART\e[0\
+	ft_printf("We will only use %d path(s) in the anthill, from \e[33;mSTART\e[0\
 			;m to \e[35;mEND\e[0;m :\n\n", slt.size);
 	move_ants(lem, str);
 	i = 0;

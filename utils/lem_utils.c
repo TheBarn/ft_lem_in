@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 17:37:55 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 12:38:32 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 19:21:28 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char		**ini_path(int size)
 	int		i;
 	int		j;
 
-	new = (char **)malloc(sizeof(char *) * size);
+	new = (char **)my_malloc(sizeof(char *) * size);
 	i = 0;
 	while (i < size)
 	{
-		new[i] = (char *)malloc(sizeof(char) * size);
+		new[i] = (char *)my_malloc(sizeof(char) * size);
 		j = 0;
 		while (j < size)
 			new[i][j++] = 0;
@@ -61,11 +61,11 @@ char		**ft_lemcpy(char **lem, int size)
 	int		i;
 	int		j;
 
-	new = (char **)malloc(sizeof(char *) * size);
+	new = (char **)my_malloc(sizeof(char *) * size);
 	i = 0;
 	while (i < size)
 	{
-		new[i] = (char *)malloc(sizeof(char) * size);
+		new[i] = (char *)my_malloc(sizeof(char) * size);
 		j = 0;
 		while (j < size)
 		{

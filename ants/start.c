@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:56:34 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 12:59:29 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 19:21:09 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		*ini_nb_path(t_path slt)
 	int		*nb_path;
 
 	i = 0;
-	nb_path = (int *)malloc(sizeof(int) * slt.size);
+	nb_path = (int *)my_malloc(sizeof(int) * slt.size);
 	while (i < slt.size)
 		nb_path[i++] = 0;
 	return (nb_path);
@@ -49,7 +49,7 @@ int		*ini_length(int size, t_path slt)
 	int		*length;
 
 	i = 0;
-	length = (int *)malloc(sizeof(int) * slt.size);
+	length = (int *)my_malloc(sizeof(int) * slt.size);
 	while (i < slt.size)
 	{
 		length[i] = sizeof_path(slt.path[i], size);

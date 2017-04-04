@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 12:46:49 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 15:41:51 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:51:17 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void		print_mv(int ant, char *room)
 {
-	printf("L%d-%s ", ant, room);
+	ft_printf("L%d-%s ", ant, room);
 }
 
 void		print_mv_l(int ant, char *room)
 {
-	printf("L%d-%s\n", ant, room);
+	ft_printf("L%d-%s\n", ant, room);
 }
 
 void		direct_path(t_lem lem)

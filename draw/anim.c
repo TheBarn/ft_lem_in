@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:05:33 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:27:21 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:48:29 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	move_ants(t_lem lem, char *str)
 		ants[0] = ft_max(ants[0] - toto, 0);
 		add_middle_ants(lem, ants, line);
 		ants[lem.size - 1] += count_last_room(lem, line);
-		printf("\e[%dA", len);
+		ft_printf("\e[%dA", len);
 		print_path_color(lem, str, ants);
 		clear_middle(lem.size, ants);
 	}

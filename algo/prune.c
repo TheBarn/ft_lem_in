@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 11:01:13 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 11:12:25 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 19:21:36 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			*ini_vertex(char **path, int size, int len)
 	int		j;
 	int		k;
 
-	vertex = (int *)malloc(sizeof(int) * len);
+	vertex = (int *)my_malloc(sizeof(int) * len);
 	j = size - 1;
 	k = 0;
 	while (j > 0)

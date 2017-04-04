@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:25 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 12:36:44 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 19:21:23 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_room	*add_room(t_room *room, t_lem *lem, t_room new)
 	int		i;
 
 	lem->size += 1;
-	updated = (t_room *)malloc(sizeof(t_room) * lem->size);
+	updated = (t_room *)my_malloc(sizeof(t_room) * lem->size);
 	i = 0;
 	while (i < lem->size - 1)
 	{
@@ -104,7 +104,7 @@ t_room	*parse_room(int fd, t_lem *lem, char **line)
 	while (get_next_line(fd, line) == 1 && \
 			(is_room(*line) || (*line)[0] == '#'))
 	{
-		printf("%s\n", *line);
+		ft_printf("%s\n", *line);
 		if ((*line)[0] != '#')
 		{
 			split = ft_strsplit(*line, ' ');

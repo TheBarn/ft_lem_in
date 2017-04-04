@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 11:05:26 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 12:10:18 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 19:21:04 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			*ini_room(int size)
 	int		i;
 	int		*room;
 
-	room = (int *)malloc(sizeof(int) * size);
+	room = (int *)my_malloc(sizeof(int) * size);
 	room[0] = 0;
 	i = 1;
 	while (i < size)
@@ -31,7 +31,7 @@ void		add_new_path(t_path *slt, char **new, int size)
 	int		i;
 
 	tmp = slt->path;
-	slt->path = (char ***)malloc(sizeof(char **) * (slt->size + 1));
+	slt->path = (char ***)my_malloc(sizeof(char **) * (slt->size + 1));
 	i = 0;
 	while (i < slt->size)
 	{

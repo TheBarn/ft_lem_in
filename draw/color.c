@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 17:07:12 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:38:35 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:48:34 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	print_path_color(t_lem lem, char *draw, int *ants)
 				draw[i + 1] >= '0' && draw[i + 1] <= '9')
 			put_room_color(lem, find_room_id(lem, &draw[i]), ants);
 		else if (!(draw[i] >= '0' && draw[i] <= '9'))
-			printf("%c", draw[i]);
+			ft_printf("%c", draw[i]);
 		i++;
 	}
 }

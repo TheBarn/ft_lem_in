@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:38:39 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 17:05:58 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 19:21:33 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_rooms_order(t_lem lem)
 	i = 0;
 	while (i < lem.size)
 	{
-		printf("room[%d] is %s\n", i, ((lem.room[i]).name));
+		ft_printf("room[%d] is %s\n", i, ((lem.room[i]).name));
 		i++;
 	}
 }
@@ -73,7 +73,7 @@ int		*ft_tabcpy(int *tab, int size)
 	int		i;
 	int		*new;
 
-	new = (int *)malloc(sizeof(int) * size);
+	new = (int *)my_malloc(sizeof(int) * size);
 	i = 0;
 	while (i < size)
 	{

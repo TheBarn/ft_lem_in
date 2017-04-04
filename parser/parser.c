@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:36 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 15:41:28 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 18:49:33 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ t_lem	parser(int opt)
 	lem.size = 0;
 	lem.room = parse_room(0, &lem, &line);
 	lem.map = parse_tubes(0, &lem, &line, opt);
-	printf("\n");
+	ft_printf("\n");
 	return (lem);
 }
