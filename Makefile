@@ -13,7 +13,10 @@ INC_DIR			=	includes
 SRCS			= 	algo/algo.c			\
 					algo/prune.c		\
 					algo/shortest_path.c		\
-					ants/ants.c			\
+					ants/diff.c			\
+					ants/move.c			\
+					ants/start.c			\
+					ants/step.c			\
 					parser/parse_nb.c	\
 					parser/parse_room.c	\
 					parser/parse_tube.c	\

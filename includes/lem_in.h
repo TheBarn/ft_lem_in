@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 12:33:34 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 14:59:55 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	check_path(int size);
 int		max_y(t_lem *lem);
 int		find_room_id(t_lem lem, char *str);
 void	ft_putroom_in_color(int room, int color);
-void	move_ants_no_show(t_lem lem, t_path slt, int nb, int size);
+void	move_ants_no_show(t_lem lem, t_path slt);
 void	print_mv(int ant, char *room);
 void	print_mv_l(int ant, char *room);
 int		prune_lem(char **lem, char **path, int size);
@@ -89,6 +89,12 @@ int		count_words(char *s, char c);
 int		is_integer(char *str);
 void	free_split(char **tab, int size);
 void	fill_new_room(t_room *room, char **split, int tmp);
+void	print_from_diff(t_lem lem, char **diff, int *start);
+void	ini_moves(t_path slt, int size, int nb);
+void	add_paths(t_path slt, int size, char **com);
+void	move_one_step(char **path, int size);
+char	**ini_diff(int size, char **new, char **old);
+void	print_moves(t_lem lem, int j, int *start, int opt);
 
 # define ROOM (lem->room)
 # define SIZE (lem->size)
