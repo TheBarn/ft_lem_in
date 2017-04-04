@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/03 21:11:13 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/04 12:33:34 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ char	**ini_path(int size);
 void	free_path(char **path, int size);
 void	add_paths(t_path slt, int size, char **com);
 void	print_tab(int *tab, int size);
-void	put_in_order(t_lem *lem);
 void	put_tubes(t_lem *lem, char *str, char **path, int width, int size);
 void	print_rooms_order(t_lem lem);
 void	draw_from_path(t_lem lem, char **path, int size, char *draw, int nb, int nb_slt);
@@ -81,6 +80,15 @@ void	ft_putroom_in_color(int room, int color);
 void	move_ants_no_show(t_lem lem, t_path slt, int nb, int size);
 void	print_mv(int ant, char *room);
 void	print_mv_l(int ant, char *room);
+int		prune_lem(char **lem, char **path, int size);
+char	**prune_path(char **path, int size, int *room);
+void	add_new_path(t_path *slt, char **new, int size);
+char	**find_shortest_path(t_lem lem);
+int		*ft_tabcpy(int *tab, int size);
+int		count_words(char *s, char c);
+int		is_integer(char *str);
+void	free_split(char **tab, int size);
+void	fill_new_room(t_room *room, char **split, int tmp);
 
 # define ROOM (lem->room)
 # define SIZE (lem->size)

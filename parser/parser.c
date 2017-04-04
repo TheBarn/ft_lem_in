@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/04 12:23:36 by barnout           #+#    #+#             */
+/*   Updated: 2017/04/04 12:23:40 by barnout          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
 void	exit_lem_in(char *str)
 {
-	write(2, "ERROR ", 6);
 	write(2, str, ft_strlen(str));
 	write(2, "\n", 1);
 	exit(0);
@@ -27,11 +38,7 @@ t_lem	parser(int fd)
 	lem.nb = parse_nb(fd, &line);
 	lem.size = 0;
 	lem.room = parse_room(fd, &lem, &line);
-//	print_rooms_order(lem);
 	lem.map = parse_tubes(fd, &lem, &line);
 	printf("\n");
-//	print_lem(lem.map, lem.size);
-//	print_rooms_order(lem);
-//	print_lem(lem.map, lem.size);
 	return (lem);
 }

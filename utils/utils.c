@@ -40,3 +40,18 @@ void	print_tab(int *tab, int size)
 	ft_putnbr(tab[size - 1]);
 	ft_putchar('\n');
 }
+
+int		*ft_tabcpy(int *tab, int size)
+{
+	int		i;
+	int		*new;
+
+	new = (int *)malloc(sizeof(int) * size);
+	i = 0;
+	while (i < size)
+	{
+		new[i] = tab[i];
+		i++;
+	}
+	return (new);
+}

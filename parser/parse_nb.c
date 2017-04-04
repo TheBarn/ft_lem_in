@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_nb.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/04 12:23:21 by barnout           #+#    #+#             */
+/*   Updated: 2017/04/04 12:24:02 by barnout          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
 int		test_intmax(char *str)
@@ -18,16 +30,16 @@ void	is_positive_integer(char *str)
 	i = 0;
 	len = ft_strlen(str);
 	if (len > 10)
-		exit_lem_in("the number of ants cannot be contained in an integer type");
+		exit_lem_in("ERROR");
 	while (i < len)
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
-			exit_lem_in("the number of ants must be positive and without any other characters than numbers");
+			exit_lem_in("ERROR");
 		i++;
 	}
 	if (len == 10)
-		if(!test_intmax(str))
-			exit_lem_in("the number of ants cannot be contained in an integer type");
+		if (!test_intmax(str))
+			exit_lem_in("ERROR");
 }
 
 int		parse_nb(int fd, char **line)
@@ -39,7 +51,7 @@ int		parse_nb(int fd, char **line)
 	{
 		printf("%s\n", *line);
 		if ((*line)[0] == '#' && read_command(*line) != 0)
-			exit_lem_in("the number of ants is not at the beggining of the file");
+			exit_lem_in("ERROR");
 		else
 		{
 			is_positive_integer(*line);
@@ -47,6 +59,6 @@ int		parse_nb(int fd, char **line)
 		}
 	}
 	if (nb == -1)
-		exit_lem_in("the number of ants has not been found");
+		exit_lem_in("ERROR");
 	return (nb);
 }

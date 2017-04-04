@@ -11,12 +11,14 @@ LIB_LINK		=	-L $(LIB_PATH) -lft
 INC_DIR			=	includes
 
 SRCS			= 	algo/algo.c			\
-					algo/order.c		\
+					algo/prune.c		\
+					algo/shortest_path.c		\
 					ants/ants.c			\
 					parser/parse_nb.c	\
 					parser/parse_room.c	\
 					parser/parse_tube.c	\
 					parser/parser.c		\
+					parser/parser_utils.c		\
 					utils/utils.c		\
 					utils/lem_utils.c	\
 					main.c

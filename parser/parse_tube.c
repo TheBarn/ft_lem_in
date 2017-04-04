@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_tube.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/04 12:23:32 by barnout           #+#    #+#             */
+/*   Updated: 2017/04/04 12:34:36 by barnout          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
 char	**ini_map(t_lem *lem)
@@ -24,16 +36,16 @@ char	**ini_map(t_lem *lem)
 int		room_rank(t_lem *lem, char *str)
 {
 	int		i;
-	
+
 	i = 0;
 	while (i < lem->size)
 	{
 		if (ft_strcmp(str, (lem->room)[i].name) == 0)
-			break;
+			break ;
 		i++;
 	}
 	if (i == lem->size)
-		exit_lem_in("no room found for tube indication");
+		exit_lem_in("ERROR");
 	return (i);
 }
 
@@ -43,21 +55,20 @@ t_tube	read_tube(t_lem *lem, char *str)
 	char	**split;
 
 	if (count_words(str, ' ') != 1)
-		exit_lem_in("space found in indication for a tube");
+		exit_lem_in("ERROR");
 	if (count_words(str, '\t') != 1)
-		exit_lem_in("tab found in indication for a tube");
+		exit_lem_in("ERROR");
 	if (count_words(str, '-') != 2)
-		exit_lem_in("two - in tube line");
+		exit_lem_in("ERROR");
 	split = ft_strsplit(str, '-');
 	tube.start = room_rank(lem, split[0]);
 	tube.end = room_rank(lem, split[1]);
 	free_split(split, 2);
 	if (tube.start == tube.end)
-		exit_lem_in("start and end of the tube are the same");
+		exit_lem_in("ERROR");
 	return (tube);
 }
 
-//TODO check if there is a way from start to end
 void	check_map(t_lem *lem, char **map)
 {
 	int		i;
@@ -101,4 +112,4 @@ char	**parse_tubes(int fd, t_lem *lem, char **line)
 	}
 	check_map(lem, map);
 	return (map);
-} 
+}
