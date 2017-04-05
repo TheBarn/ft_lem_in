@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 12:46:49 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:51:17 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 15:24:13 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		main(void)
 
 	lem = parser(0);
 	direct_path(lem);
-	slt = algo(ft_lemcpy(lem.map, lem.size), lem.size);
+	slt = algo(lem);
 	if (slt.size == 0)
 		exit_lem_in("no path found between START and END");
 	move_ants_no_show(lem, slt);
@@ -52,5 +52,10 @@ int		main(void)
 	while (i < slt.size)
 		free_path((slt.path)[i++], lem.size);
 	free(slt.path);
+	free_path(lem.map, lem.size);
+	i = 0;
+	while (i < lem.size)
+		free(lem.room[i++].name);
+	free(lem.room);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:32 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 19:21:16 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 15:23:41 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ char	**parse_tubes(int fd, t_lem *lem, char **line, int opt)
 {
 	t_coord	tube;
 	char	**map;
-	int		tmp;
 
 	map = ini_map(lem);
 	if ((*line)[0] != '#')
@@ -101,17 +100,21 @@ char	**parse_tubes(int fd, t_lem *lem, char **line, int opt)
 		map[ft_min(tube.x, tube.y)][ft_max(tube.x, tube.y)] += 1;
 	}
 	ft_printf("%s\n", *line);
-	while ((tmp = get_next_line(fd, line)) == 1 || \
-			(tmp = 1 && opt == 1 && (*line)[0] != '\0'))
+	free(*line);
+	while (get_next_line(fd, line) == 1)
 	{
 		ft_printf("%s\n", *line);
-		if ((*line)[0] != '#')
+		if (opt == 1 && (*line)[0] == '\0')
+			break;
+		else if ((*line)[0] != '#')
 		{
 			tube = read_tube(lem, *line);
 			map[tube.x][tube.y] += 1;
 			map[tube.y][tube.x] += 1;
 		}
+		free(*line);
 	}
+	free(*line);
 	check_map(lem, map);
 	return (map);
 }

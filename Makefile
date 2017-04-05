@@ -1,7 +1,6 @@
-CC				=	gcc
+CC				=	gcc -Wall -Wextra -Werror 
 NAME			=	lem-in
 NAME_V			=	visu
-FLAGS			=	-Wall -Wextra -Werror
 
 LIB_PATH		=	libft
 LIB				=	$(LIB_PATH)/libft.a
@@ -63,14 +62,14 @@ OK				=	$(C_OK)OK$(C_NO)
 all: $(NAME) $(NAME_V)
 
 $(NAME):	$(LIB) $(OBJS)
-	@$(CC) $(FLAGS) -o $(NAME) $^ $(LIB_LINK)
+	@$(CC) -o $(NAME) $^ $(LIB_LINK)
 	@echo "Compiling" [ $(NAME) ] $(SUCCESS)
 
 $(LIB):
 	@make -C $(LIB_PATH)
 
 $(NAME_V):	$(LIB) $(OBJS_V)
-	@$(CC) $(FLAGS) -o $(NAME_V) $^ $(LIB_LINK)
+	@$(CC) -o $(NAME_V) $^ $(LIB_LINK)
 	@echo "Compiling" [ $(NAME_V) ] $(SUCCESS)
 
 clean:

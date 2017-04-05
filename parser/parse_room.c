@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:25 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 19:21:23 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 11:55:02 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ t_room	*parse_room(int fd, t_lem *lem, char **line)
 		}
 		else
 			tmp = read_command(*line);
+		free(*line);
 	}
 	check_sp(room, lem);
 	organize_room(room, lem->size);

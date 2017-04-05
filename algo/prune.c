@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 11:01:13 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 19:21:36 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 11:32:13 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ char		**prune_path(char **path, int size, int *room)
 		}
 		i++;
 	}
+	free(vertex);
 	free_path(path, size);
 	return (new);
 }

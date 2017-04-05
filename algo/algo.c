@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 11:01:23 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:49:53 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 15:09:36 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_lem		update_lem(char **map, int size)
 	return (lem);
 }
 
-t_path		algo(char **map, int size)
+t_path		algo(t_lem old)
 {
 	t_path	slt;
 	char	**new_path;
@@ -29,17 +29,18 @@ t_path		algo(char **map, int size)
 
 	slt.path = NULL;
 	slt.size = 0;
-	lem = update_lem(map, size);
-	while (size > 0)
+	lem = update_lem(old.map, old.size);
+	while (lem.size > 0)
 	{
 		new_path = find_shortest_path(lem);
 		if (new_path != NULL)
 		{
-			add_new_path(&slt, new_path, size);
-			prune_lem(map, new_path, size);
+			add_new_path(&slt, new_path);
+			prune_lem(lem.map, new_path, lem.size);
 		}
 		else
-			size = 0;
+			lem.size = 0;
 	}
+	free_path(lem.map, old.size);
 	return (slt);
 }

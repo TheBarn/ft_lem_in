@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:21 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:51:22 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 11:55:31 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		parse_nb(int fd, char **line)
 			is_positive_integer(*line);
 			nb = ft_atoi(*line);
 		}
+		free(*line);
 	}
 	if (nb == -1)
 		exit_lem_in("ERROR");

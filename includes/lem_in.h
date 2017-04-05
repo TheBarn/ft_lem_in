@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:38:37 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 15:43:43 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	free_split(char **tab, int size);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 char	*draw_lem(t_lem lem, char **tube);
-t_path	algo(char **lem, int size);
+t_path	algo(t_lem lem);
 void	print_lem(char **lem, int size); //
 char	**ft_lemcpy(char **lem, int size);
 void	move_ants(t_lem lem, char *draw);
@@ -83,7 +83,7 @@ void	print_mv(int ant, char *room);
 void	print_mv_l(int ant, char *room);
 int		prune_lem(char **lem, char **path, int size);
 char	**prune_path(char **path, int size, int *room);
-void	add_new_path(t_path *slt, char **new, int size);
+void	add_new_path(t_path *slt, char **new);
 char	**find_shortest_path(t_lem lem);
 int		*ft_tabcpy(int *tab, int size);
 int		count_words(char *s, char c);
@@ -92,7 +92,6 @@ void	free_split(char **tab, int size);
 void	fill_new_room(t_room *room, char **split, int tmp);
 void	print_from_diff(t_lem lem, char **diff, int *start);
 void	ini_moves(t_path slt, int size, int nb);
-void	add_paths(t_path slt, int size, char **com);
 void	move_one_step(char **path, int size);
 char	**ini_diff(int size, char **new, char **old);
 void	print_moves(t_lem lem, int j, int *start, int opt);

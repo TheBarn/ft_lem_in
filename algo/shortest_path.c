@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 11:05:26 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 19:21:04 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 15:06:17 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			*ini_room(int size)
 	return (room);
 }
 
-void		add_new_path(t_path *slt, char **new, int size)
+void		add_new_path(t_path *slt, char **new)
 {
 	char	***tmp;
 	int		i;
@@ -35,12 +35,10 @@ void		add_new_path(t_path *slt, char **new, int size)
 	i = 0;
 	while (i < slt->size)
 	{
-		(slt->path)[i] = ft_lemcpy(tmp[i], size);
-		free_path(tmp[i], size);
+		(slt->path)[i] = tmp[i];
 		i++;
 	}
-	if (!tmp)
-		free(tmp);
+	free(tmp);
 	(slt->path)[i] = new;
 	slt->size += 1;
 }
@@ -58,7 +56,7 @@ void		add_next_branches(t_lem lem, char **path, int i, int *room)
 			k = 0;
 			while (k < lem.size)
 			{
-				while (lem.map[j][k] == 0)
+				while (k < lem.size && lem.map[j][k] == 0)
 					k++;
 				if (k < lem.size && lem.map[k][k] == 0)
 				{
@@ -109,9 +107,12 @@ char		**find_shortest_path(t_lem lem)
 		add_next_branches(lem, path, i++, room);
 	}
 	if (room[lem.size - 1] == -1)
+	{
+		free(room);
+		free_path(path, lem.size);
 		return (NULL);
+	}
 	path = prune_path(path, lem.size, room);
 	free(room);
-	free_path(lem.map, lem.size);
 	return (path);
 }

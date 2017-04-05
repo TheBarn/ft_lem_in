@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 09:05:33 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:48:10 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 15:09:55 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	move_ants_no_show(t_lem lem, t_path slt)
 	int		i;
 	char	**tmp;
 	char	**diff;
-	int		*room;
 	int		start[lem.nb];
 
 	ini_moves(slt, lem.size, lem.nb);
@@ -68,10 +67,8 @@ void	move_ants_no_show(t_lem lem, t_path slt)
 		add_paths(slt, lem.size, lem.map);
 		diff = ini_diff(lem.size, lem.map, tmp);
 		print_from_diff(lem, diff, start);
-		free(diff);
+		free_path(diff, lem.size);
 		free_path(tmp, lem.size);
 		ft_printf("\n");
 	}
-	free_path(lem.map, lem.size);
-	free(lem.room);
 }
