@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 11:01:13 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/05 16:54:42 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 19:39:55 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int			prune_room(char **lem, int j, int size)
 {
 	int		i;
+	int		toto;
 
+	toto = 0;
 	if (j == size - 1)
 		return (0);
 	i = 0;

@@ -6,46 +6,56 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:57:54 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:31:40 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/05 19:20:45 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	move_to_next(char **path, int size, int i, int j)
+void	move_ant(char **path, int i, int j, int size)
 {
+	int		k;
+
+	if (j != size - 1)
+	{
+	k = 1;
+	while (path[j][k] == 0)
+		k++;
 	path[i][j]--;
-	i = j;
-	j = 1;
-	if (i == size - 1)
-		path[size - 1][size - 1]++;
+	path[j][k]++;
+	if (k != size - 1 && path[j][k] > 2)
+		move_ant(path, j, k, size);
+	}
+}
+
+int		first_room(char **path, int size, int i)
+{
+	int		j;
+
+	if (i == 0 && path[0][0] > 0)
+		return (0);
 	else
 	{
+		j = 0;
 		while (j < size && path[i][j] == 0)
 			j++;
-		path[i][j]++;
+		if (path[i][j] > 1)
+			return (j);
+		return (first_room(path, size, j));
 	}
+	return (0);
 }
 
 void	move_one_step(char **path, int size)
 {
-	int		i;
 	int		j;
+	int		i;
 
-	i = size - 1;
-	while (i >= 0)
-	{
-		j = size - 1;
-		while (j >= 0)
-		{
-			if (i == 0 && j == 0 && path[i][j] > 0)
-				move_to_next(path, size, i, j);
-			else if (j != size - 1 && path[i][j] > 1)
-				move_to_next(path, size, i, j);
-			j--;
-		}
-		i--;
-	}
+	j = first_room(path, size, 0);
+	i = 0;
+	while (i < size && path[i][j] == 0)
+		i++;
+	move_ant(path, i, j, size);
 }
 
 int		add_paths_in(t_path slt, int i, int j)
