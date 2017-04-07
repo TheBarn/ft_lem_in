@@ -6,11 +6,23 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 11:01:23 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/05 19:39:46 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 14:22:28 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+void		del_mid(t_lem lem)
+{
+	int		i;
+
+	i = 0;
+	while (i < lem.size)
+	{
+		lem.map[i][i] = 0;
+		i++;
+	}
+}
 
 t_lem		update_lem(char **map, int size)
 {

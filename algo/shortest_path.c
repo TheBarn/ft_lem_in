@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 11:05:26 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/05 17:23:59 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 11:16:48 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,6 @@ int			compare_room(int *room, int *tmp, int size)
 	}
 	free(tmp);
 	return (0);
-}
-
-void		del_mid(t_lem lem)
-{
-	int		i;
-
-	i = 0;
-	while (i < lem.size)
-	{
-		lem.map[i][i] = 0;
-		i++;
-	}
 }
 
 char		**find_shortest_path(t_lem lem)

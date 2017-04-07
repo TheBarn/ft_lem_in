@@ -6,48 +6,17 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:52:57 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/05 19:39:58 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 14:28:23 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "../libft/libft.h"
-#include <stdio.h>
-# include <fcntl.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-
-typedef struct 	s_room
-{
-	char	*name;
-	int		x;
-	int		y;
-	int		sp;
-}				t_room;
-
-typedef struct	s_coord
-{
-	int		x;
-	int		y;
-}				t_coord;
-
-typedef struct	s_lem
-{
-	int		nb;
-	int		size;
-	t_room	*room;
-	char	**map;
-}				t_lem;
-
-typedef struct	s_path
-{
-	char	***path;
-	int		size;
-}				t_path;
+# include <stdlib.h>
+# include <unistd.h>
+# include "../libft/libft.h"
+# include "typedef.h"
 
 int		parse_nb(int fd, char **line);
 int		test_intmax(char *str);
@@ -62,7 +31,7 @@ int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 char	*draw_lem(t_lem lem, char **tube);
 t_path	algo(t_lem lem);
-void	print_lem(char **lem, int size); //
+void	print_lem(char **lem, int size);
 char	**ft_lemcpy(char **lem, int size);
 void	move_ants(t_lem lem, char *draw);
 char	**ini_path(int size);
@@ -78,7 +47,7 @@ int		max_y(t_lem lem);
 int		find_room_id(t_lem lem, char *str);
 void	print_path_color(t_lem lem, char *draw, int *ants);
 void	ft_putroom_in_color(int room, int color);
-void	move_ants_no_show(t_lem lem, t_path slt);
+void	move_ants_no_show(t_lem lem, t_path *slt);
 void	print_mv(int ant, char *room);
 void	print_mv_l(int ant, char *room);
 int		prune_lem(char **lem, char **path, int size);
@@ -91,7 +60,7 @@ int		is_integer(char *str);
 void	free_split(char **tab, int size);
 void	fill_new_room(t_room *room, char **split, int tmp);
 void	print_from_diff(t_lem lem, char **diff, int *start);
-void	ini_moves(t_path slt, int size, int nb);
+void	ini_moves(t_path *slt, int size, int nb);
 void	move_one_step(char **path, int size);
 char	**ini_diff(int size, char **new, char **old);
 void	print_moves(t_lem lem, int j, int *start, int opt);
@@ -101,5 +70,10 @@ void	put_horizontal(char *str, int width, int x1, int y1);
 void	put_vertical(char *str, int width, int x1, int y1);
 void	put_up(char *str, int width, int x1, int y1);
 void	put_down(char *str, int width, int x1, int y1);
+int		sizeof_path(char **path, int size);
+void	print_and_free(char **line);
+void	del_mid(t_lem lem);
+void	print_path_sp(t_lem lem, char **path, int size);
+int		*ini_nb_path(t_path slt);
 
 #endif

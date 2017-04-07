@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/31 11:05:29 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 18:48:57 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 11:23:21 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void		exc_paths(t_lem lem, char *draw)
 
 	if ((lem.map)[0][lem.size - 1] == 1)
 	{
-		ft_printf("%d ant(s) will travel in the anthill.\nThere is a direct pipe \
-		from \e[33;mSTART\e[0;m to \e[35;mEND\e[0;m, ants will move together \
-		from \e[33;mSTART\e[0;m to \e[35;mEND\e[0;m in one move.\n\n", lem.nb);
+		ft_printf("direct path >> ants will move together\n\n");
 		com = ini_path(lem.size);
 		com[0][0] = lem.nb;
 		com[0][lem.size - 1] = 1;
@@ -36,8 +34,7 @@ void		check_path(int size)
 {
 	if (size == 0)
 	{
-		ft_printf("There is no path linking \e[33;mSTART\e[0;m to \
-				\e[35;mEND\e[0;m in the anthill. Ants will not move.\n\n");
+		ft_printf("No path found.\n\n");
 		exit(0);
 	}
 }

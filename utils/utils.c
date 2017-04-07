@@ -6,23 +6,11 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:38:39 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 19:21:33 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 11:11:25 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-void	print_rooms_order(t_lem lem)
-{
-	int		i;
-
-	i = 0;
-	while (i < lem.size)
-	{
-		ft_printf("room[%d] is %s\n", i, ((lem.room[i]).name));
-		i++;
-	}
-}
 
 int		ft_max(int a, int b)
 {

@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 17:37:55 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/04 19:21:28 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 14:30:36 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,18 @@ void		print_lem(char **lem, int size)
 		}
 		ft_putchar('\n');
 	}
+}
+
+int			*ini_nb_path(t_path slt)
+{
+	int		i;
+	int		*nb_path;
+
+	i = 0;
+	nb_path = (int *)my_malloc(sizeof(int) * slt.size);
+	while (i < slt.size)
+		nb_path[i++] = 0;
+	return (nb_path);
 }
 
 char		**ft_lemcpy(char **lem, int size)

@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:57:54 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/05 19:20:45 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 14:15:33 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	move_ant(char **path, int i, int j, int size)
 
 	if (j != size - 1)
 	{
-	k = 1;
-	while (path[j][k] == 0)
-		k++;
-	path[i][j]--;
-	path[j][k]++;
-	if (k != size - 1 && path[j][k] > 2)
-		move_ant(path, j, k, size);
+		k = 1;
+		while (path[j][k] == 0)
+			k++;
+		path[i][j]--;
+		path[j][k]++;
+		if (k != size - 1 && path[j][k] > 2)
+			move_ant(path, j, k, size);
 	}
 }
 

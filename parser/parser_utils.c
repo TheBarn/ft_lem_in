@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:25:48 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/05 11:55:55 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 13:23:50 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,10 @@ void	fill_new_room(t_room *room, char **split, int tmp)
 	room->x = ft_atoi(split[1]);
 	room->y = ft_atoi(split[2]);
 	room->sp = tmp;
+}
+
+void	print_and_free(char **line)
+{
+	ft_printf("%s\n", *line);
+	free(*line);
 }

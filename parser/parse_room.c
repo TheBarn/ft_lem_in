@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/04 12:23:25 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/05 11:55:02 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 11:06:19 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,14 @@ void	check_sp(t_room *room, t_lem *lem)
 		exit_lem_in("ERROR");
 }
 
-void	organize_room(t_room *room, int size)
+void	organize_room(t_lem *lem, t_room *room, int size)
 {
 	int		start;
 	t_room	tmp;
 	int		end;
 
 	start = 0;
+	check_sp(room, lem);
 	while (start < size && room[start].sp != 1)
 		start++;
 	tmp = room[0];
@@ -117,7 +118,6 @@ t_room	*parse_room(int fd, t_lem *lem, char **line)
 			tmp = read_command(*line);
 		free(*line);
 	}
-	check_sp(room, lem);
-	organize_room(room, lem->size);
+	organize_room(lem, room, lem->size);
 	return (room);
 }

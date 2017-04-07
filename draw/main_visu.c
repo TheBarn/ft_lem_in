@@ -6,7 +6,7 @@
 /*   By: barnout <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/30 17:29:39 by barnout           #+#    #+#             */
-/*   Updated: 2017/04/05 15:46:39 by barnout          ###   ########.fr       */
+/*   Updated: 2017/04/07 12:14:27 by barnout          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,10 @@ void	print_lem_color(t_lem lem, char *draw)
 	ft_printf("\n");
 }
 
-int		main(void)
+void	big_free(t_path slt, t_lem lem, char *str, char *draw)
 {
-	t_lem	lem;
-	t_path	slt;
 	int		i;
-	char	*str;
-	char	*draw;
 
-	lem = parser(1);
-	draw = draw_lem(lem, lem.map);
-	ft_printf("\nThe anthill can be representated this way, with \e[33;mSTART\e[0;m and \e[35;mEND\e[0;m :\n\n");
-	print_lem_color(lem, draw);
-	exc_paths(lem, draw);
-	slt = algo(lem);
-	check_path(slt.size);
-	str = draw_paths_only(lem, slt);
-	ft_printf("We will only use %d path(s) in the anthill, from \e[33;mSTART\e[0;m to \e[35;mEND\e[0;m :\n\n", slt.size);
-	move_ants(lem, str);
 	i = 0;
 	while (i < slt.size)
 		free_path((slt.path)[i++], lem.size);
@@ -80,5 +66,25 @@ int		main(void)
 	free(lem.room);
 	free(str);
 	free(draw);
+}
+
+int		main(void)
+{
+	t_lem	lem;
+	t_path	slt;
+	char	*str;
+	char	*draw;
+
+	lem = parser(1);
+	draw = draw_lem(lem, lem.map);
+	ft_printf("\nAnthill from \e[33;mSTART\e[0;m to \e[35;mEND\e[0;m :\n\n");
+	print_lem_color(lem, draw);
+	exc_paths(lem, draw);
+	slt = algo(lem);
+	check_path(slt.size);
+	str = draw_paths_only(lem, slt);
+	ft_printf("We will only use %d path(s) in the anthill :\n\n", slt.size);
+	move_ants(lem, str);
+	big_free(slt, lem, str, draw);
 	return (0);
 }
